@@ -1,4 +1,16 @@
+export function ensureGtag() {
+  window.dataLayer = window.dataLayer || [];
+  if (!window.gtag) {
+    window.gtag = function gtag() {
+      // gtag.js reads the Arguments object, not a rest array.
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer!.push(arguments);
+    };
+  }
+}
+
 export function grantGoogleConsent() {
+  ensureGtag();
   window.gtag?.("consent", "update", {
     analytics_storage: "granted",
     ad_storage: "granted",
@@ -8,6 +20,7 @@ export function grantGoogleConsent() {
 }
 
 export function denyGoogleConsent() {
+  ensureGtag();
   window.gtag?.("consent", "update", {
     analytics_storage: "denied",
     ad_storage: "denied",

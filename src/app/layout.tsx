@@ -94,7 +94,14 @@ export default function RootLayout({
         <SiteHeader />
         {children}
         <SiteFooter />
-        <ConsentManager />
+        <ConsentManager
+          ids={{
+            gaMeasurementId: publicEnv.gaMeasurementId,
+            googleAdsId: publicEnv.googleAdsId,
+            metaPixelId: publicEnv.metaPixelId,
+            tiktokPixelId: publicEnv.tiktokPixelId,
+          }}
+        />
         <JsonLd />
       </body>
     </html>

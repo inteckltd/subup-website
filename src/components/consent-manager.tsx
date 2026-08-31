@@ -5,26 +5,33 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   denyGoogleConsent,
+  ensureGtag,
   grantGoogleConsent,
 } from "@/lib/analytics";
 import { getStoredConsent, setStoredConsent, type ConsentValue } from "@/lib/consent";
-import { publicEnv } from "@/lib/public-env";
 import Link from "next/link";
 
-function loadGoogle(id: string) {
+export type PixelIds = {
+  gaMeasurementId: string;
+  googleAdsId: string;
+  metaPixelId: string;
+  tiktokPixelId: string;
+};
+
+function loadGoogle(id: string, adsId: string) {
+  ensureGtag();
+  window.gtag?.("js", new Date());
+  window.gtag?.("config", id, { send_page_view: true });
+  if (adsId) {
+    window.gtag?.("config", adsId);
+  }
+
   if (document.getElementById("ga-gtag")) return;
   const script = document.createElement("script");
   script.id = "ga-gtag";
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(id)}`;
   document.head.appendChild(script);
-
-  window.dataLayer = window.dataLayer || [];
-  window.gtag?.("js", new Date());
-  window.gtag?.("config", id);
-  if (publicEnv.googleAdsId) {
-    window.gtag?.("config", publicEnv.googleAdsId);
-  }
 }
 
 function loadMeta(id: string) {
@@ -78,14 +85,14 @@ function loadTikTok(id: string) {
   document.head.appendChild(script);
 }
 
-function enablePixels() {
+function enablePixels(ids: PixelIds) {
   grantGoogleConsent();
-  if (publicEnv.gaMeasurementId) loadGoogle(publicEnv.gaMeasurementId);
-  if (publicEnv.metaPixelId) loadMeta(publicEnv.metaPixelId);
-  if (publicEnv.tiktokPixelId) loadTikTok(publicEnv.tiktokPixelId);
+  if (ids.gaMeasurementId) loadGoogle(ids.gaMeasurementId, ids.googleAdsId);
+  if (ids.metaPixelId) loadMeta(ids.metaPixelId);
+  if (ids.tiktokPixelId) loadTikTok(ids.tiktokPixelId);
 }
 
-export function ConsentManager() {
+export function ConsentManager({ ids }: { ids: PixelIds }) {
   const pathname = usePathname();
   const [choice, setChoice] = useState<ConsentValue | null>(null);
   const [ready, setReady] = useState(false);
@@ -96,15 +103,17 @@ export function ConsentManager() {
     setChoice(stored);
     setReady(true);
     if (stored === "accepted") {
-      enablePixels();
+      enablePixels(ids);
     }
+    // Pixel IDs are build-time env constants.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     const showBanner = ready && !choice;
-    document.body.style.paddingBottom = showBanner ? "8rem" : "";
+    document.body.style.overflow = showBanner ? "hidden" : "";
     return () => {
-      document.body.style.paddingBottom = "";
+      document.body.style.overflow = "";
     };
   }, [ready, choice]);
 
@@ -114,6 +123,7 @@ export function ConsentManager() {
       firstView.current = false;
       return;
     }
+    window.gtag?.("event", "page_view", { page_path: pathname });
     window.fbq?.("track", "PageView");
     window.ttq?.page();
   }, [pathname, ready, choice]);
@@ -121,7 +131,7 @@ export function ConsentManager() {
   function accept() {
     setStoredConsent("accepted");
     setChoice("accepted");
-    enablePixels();
+    enablePixels(ids);
   }
 
   function reject() {
@@ -133,9 +143,18 @@ export function ConsentManager() {
   if (!ready || choice) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 p-4">
-      <div className="bg-card rounded-card ring-border mx-auto flex max-w-3xl flex-col gap-4 p-5 shadow-lg ring-1 sm:flex-row sm:items-center">
-        <p className="m-0 flex-1 text-sm">
+    <div className="fixed inset-0 z-50 flex items-end justify-center p-4 sm:items-center">
+      <div className="absolute inset-0 bg-[#010101]/50 backdrop-blur-[2px]" aria-hidden="true" />
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cookie-consent-title"
+        className="bg-card rounded-card ring-border relative z-10 w-full max-w-lg p-6 shadow-lg ring-1 sm:p-8"
+      >
+        <h2 id="cookie-consent-title" className="text-primary mb-3 text-lg font-extrabold tracking-tight">
+          Cookies
+        </h2>
+        <p className="mb-6 text-sm">
           We use analytics and advertising cookies (Google, Meta, TikTok) only if you
           accept. See the{" "}
           <Link href="/privacy" className="font-bold">
@@ -143,18 +162,18 @@ export function ConsentManager() {
           </Link>
           .
         </p>
-        <div className="flex shrink-0 gap-2">
+        <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
           <Button
             type="button"
             variant="outline"
-            className="h-10 rounded-2xl font-bold"
+            className="h-11 rounded-2xl font-bold"
             onClick={reject}
           >
             Reject
           </Button>
           <Button
             type="button"
-            className="h-10 rounded-2xl font-bold hover:bg-navy-hover"
+            className="h-11 rounded-2xl font-bold hover:bg-navy-hover"
             onClick={accept}
           >
             Accept

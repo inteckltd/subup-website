@@ -10,6 +10,8 @@ npm install
 npm run dev
 ```
 
+Next.js reads `.env.local`, not `.env.example`. Restart the dev server after changing env vars.
+
 Open [http://localhost:3000](http://localhost:3000). Store badges stay **Coming soon** until you set the App Store and Play Store URLs.
 
 ## Environment

@@ -25,15 +25,15 @@ Open [http://localhost:3000](http://localhost:3000). Store badges stay **Coming 
 | `NEXT_PUBLIC_APP_STORE_URL` | iOS download link |
 | `NEXT_PUBLIC_PLAY_STORE_URL` | Android download link |
 | `NEXT_PUBLIC_APP_STORE_ID` | Numeric App Store ID for the smart banner |
-| `RESEND_API_KEY` | Contact form |
-| `RESEND_FROM_EMAIL` | Verified Resend sender |
+| `POSTMARK_SERVER_TOKEN` | Contact form (Postmark Server API token) |
+| `POSTMARK_FROM_EMAIL` | Verified Postmark sender signature |
 | `CONTACT_TO_EMAIL` | Inbox (defaults to `info@inteckltd.co.uk`) |
 
 Analytics and ad pixels load only after the cookie banner is accepted.
 
 ## Contact form
 
-Create a free [Resend](https://resend.com) account, verify a sender domain, and set `RESEND_API_KEY` and `RESEND_FROM_EMAIL`. Until those are set, the form returns a message to email Inteck directly.
+Create a [Postmark](https://postmarkapp.com) account, add a sender signature (or verify a domain), and set `POSTMARK_SERVER_TOKEN` and `POSTMARK_FROM_EMAIL`. Until those are set, the form returns a message to email Inteck directly.
 
 ## Deploy
 

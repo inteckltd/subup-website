@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import { ServerClient } from "postmark";
 import { z } from "zod";
 import { site } from "@/lib/site";
 
@@ -27,11 +27,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  const apiKey = process.env.RESEND_API_KEY?.trim();
-  const from = process.env.RESEND_FROM_EMAIL?.trim();
+  const serverToken = process.env.POSTMARK_SERVER_TOKEN?.trim();
+  const from = process.env.POSTMARK_FROM_EMAIL?.trim();
   const to = process.env.CONTACT_TO_EMAIL?.trim() || site.email;
 
-  if (!apiKey || !from) {
+  if (!serverToken || !from) {
     return NextResponse.json(
       {
         error: `The contact form is not configured yet. Email ${site.email} instead.`,
@@ -40,21 +40,22 @@ export async function POST(request: Request) {
     );
   }
 
-  const resend = new Resend(apiKey);
-  const { error } = await resend.emails.send({
-    from,
-    to,
-    replyTo: parsed.data.email,
-    subject: `SubUp website: ${parsed.data.name}`,
-    text: [
-      `Name: ${parsed.data.name}`,
-      `Email: ${parsed.data.email}`,
-      "",
-      parsed.data.message,
-    ].join("\n"),
-  });
-
-  if (error) {
+  try {
+    const client = new ServerClient(serverToken);
+    await client.sendEmail({
+      From: from,
+      To: to,
+      ReplyTo: parsed.data.email,
+      Subject: `SubUp website: ${parsed.data.name}`,
+      TextBody: [
+        `Name: ${parsed.data.name}`,
+        `Email: ${parsed.data.email}`,
+        "",
+        parsed.data.message,
+      ].join("\n"),
+      MessageStream: "outbound",
+    });
+  } catch {
     return NextResponse.json(
       { error: `Could not send the message. Email ${site.email} instead.` },
       { status: 502 },

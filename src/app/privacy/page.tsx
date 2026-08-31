@@ -75,7 +75,7 @@ export default function PrivacyPolicyPage() {
         <li>Expo — push notifications</li>
         <li>Sentry — crash and error reports, if configured</li>
         <li>Stripe, including Stripe Connect — card payments and organiser payouts</li>
-        <li>Resend — to deliver messages from this website’s contact form</li>
+        <li>Postmark — to deliver messages from this website’s contact form</li>
       </ul>
       <p>
         Group members can see your name, photo, and rating — not your mobile or email —

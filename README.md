@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SubUp marketing site
 
-## Getting Started
+Public website for [SubUp](https://pitchin.app) — private sports groups for friends in the UK. Built with Next.js, Tailwind CSS, and shadcn/ui.
 
-First, run the development server:
+## Local
 
 ```bash
+cp .env.example .env.local
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). Store badges stay **Coming soon** until you set the App Store and Play Store URLs.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Canonical URL (also used for sitemap, robots, JSON-LD) |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | GA4 (`G-…`). Empty = not loaded |
+| `NEXT_PUBLIC_GOOGLE_ADS_ID` | Optional Google Ads (`AW-…`) |
+| `NEXT_PUBLIC_META_PIXEL_ID` | Meta Pixel (Facebook + Instagram) |
+| `NEXT_PUBLIC_META_DOMAIN_VERIFY` | Meta domain verification meta tag |
+| `NEXT_PUBLIC_TIKTOK_PIXEL_ID` | TikTok Pixel |
+| `NEXT_PUBLIC_APP_STORE_URL` | iOS download link |
+| `NEXT_PUBLIC_PLAY_STORE_URL` | Android download link |
+| `NEXT_PUBLIC_APP_STORE_ID` | Numeric App Store ID for the smart banner |
+| `RESEND_API_KEY` | Contact form |
+| `RESEND_FROM_EMAIL` | Verified Resend sender |
+| `CONTACT_TO_EMAIL` | Inbox (defaults to `info@inteckltd.co.uk`) |
 
-## Learn More
+Analytics and ad pixels load only after the cookie banner is accepted.
 
-To learn more about Next.js, take a look at the following resources:
+## Contact form
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Create a free [Resend](https://resend.com) account, verify a sender domain, and set `RESEND_API_KEY` and `RESEND_FROM_EMAIL`. Until those are set, the form returns a message to email Inteck directly.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploy
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Vercel is the usual host for this stack. Paste the same env vars in the project settings. Keep the existing Netlify legal site live until DNS points here.

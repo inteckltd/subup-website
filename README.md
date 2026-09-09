@@ -12,7 +12,7 @@ npm run dev
 
 Next.js reads `.env.local`, not `.env.example`. Restart the dev server after changing env vars.
 
-Open [http://localhost:3000](http://localhost:3000). Store badges stay **Coming soon** until you set the App Store and Play Store URLs.
+Open [http://localhost:3000](http://localhost:3000). Store badges link to the live App Store and Play listings by default.
 
 ## Environment
 
@@ -24,9 +24,9 @@ Open [http://localhost:3000](http://localhost:3000). Store badges stay **Coming 
 | `NEXT_PUBLIC_META_PIXEL_ID` | Meta Pixel (Facebook + Instagram) |
 | `NEXT_PUBLIC_META_DOMAIN_VERIFY` | Meta domain verification meta tag |
 | `NEXT_PUBLIC_TIKTOK_PIXEL_ID` | TikTok Pixel |
-| `NEXT_PUBLIC_APP_STORE_URL` | iOS download link |
-| `NEXT_PUBLIC_PLAY_STORE_URL` | Android download link |
-| `NEXT_PUBLIC_APP_STORE_ID` | Numeric App Store ID for the smart banner |
+| `NEXT_PUBLIC_APP_STORE_URL` | iOS download link (defaults to the live SubUp listing) |
+| `NEXT_PUBLIC_PLAY_STORE_URL` | Android download link (defaults to the live SubUp listing) |
+| `NEXT_PUBLIC_APP_STORE_ID` | Numeric App Store ID for the smart banner (`6805179101`) |
 | `POSTMARK_SERVER_TOKEN` | Contact form (Postmark Server API token) |
 | `POSTMARK_FROM_EMAIL` | Verified Postmark sender signature |
 | `CONTACT_TO_EMAIL` | Inbox (defaults to `info@inteckltd.co.uk`) |

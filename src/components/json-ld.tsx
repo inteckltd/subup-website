@@ -32,6 +32,8 @@ export function JsonLd() {
           priceCurrency: "GBP",
         },
         url: publicEnv.siteUrl,
+        sameAs: [publicEnv.appStoreUrl, publicEnv.playStoreUrl].filter(Boolean),
+        installUrl: publicEnv.appStoreUrl,
       },
     ],
   };

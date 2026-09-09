@@ -1,6 +1,6 @@
 # SubUp marketing site
 
-Public website for [SubUp](https://pitchin.app) — private sports groups for friends in the UK. Built with Next.js, Tailwind CSS, and shadcn/ui.
+Public website for [SubUp](https://www.subupapp.co.uk) — private sports groups for friends in the UK. Built with Next.js, Tailwind CSS, and shadcn/ui.
 
 ## Local
 

@@ -79,7 +79,7 @@ export default function PrivacyPolicyPage() {
       </ul>
       <p>
         Group members can see your name, photo, and rating — not your mobile or email —
-        through the app. Group admins enter a mobile number to invite you.
+        through the app. Group admins share a join link so you can join their group.
       </p>
 
       <h3>4. Retention</h3>

@@ -26,7 +26,7 @@ export const navLinks = [
 ] as const;
 
 export const filmPaths = {
-  video: "/video/subup.mp4",
+  video: "/video/subup-walkthrough-1080p-ben-vo-v5.mp4",
   poster: "/video/subup-poster.jpg",
   fallbackPoster: "/images/auth-hero.jpg",
 } as const;

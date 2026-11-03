@@ -10,6 +10,7 @@ import { ConsentManager } from "@/components/consent-manager";
 import { JsonLd } from "@/components/json-ld";
 import { publicEnv } from "@/lib/public-env";
 import { site } from "@/lib/site";
+import { Analytics } from "@vercel/analytics/next";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -105,6 +106,7 @@ export default function RootLayout({
           }}
         />
         <JsonLd />
+        <Analytics />
       </body>
     </html>
   );

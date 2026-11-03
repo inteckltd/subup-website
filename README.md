@@ -31,7 +31,7 @@ Open [http://localhost:3000](http://localhost:3000). Store badges link to the li
 | `POSTMARK_FROM_EMAIL` | Verified Postmark sender signature |
 | `CONTACT_TO_EMAIL` | Inbox (defaults to `info@inteckltd.co.uk`) |
 
-Analytics and ad pixels load only after the cookie banner is accepted.
+Google Analytics and ad pixels load only after the cookie banner is accepted. Vercel Web Analytics counts visits without cookies.
 
 ## Contact form
 

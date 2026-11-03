@@ -18,7 +18,7 @@ export default function PrivacyPolicyPage() {
       intro="What we collect, why we collect it, who we share it with, and your rights under UK GDPR."
     >
       <p className="text-muted-foreground mb-5 text-xs font-bold tracking-[0.08em] uppercase">
-        Version 1.4 · Last updated 26 August 2026
+        Version 1.5 · Last updated 3 November 2026
       </p>
       <p>
         {site.company} (“SubUp”, “we”, “us”) is the controller of personal data you
@@ -55,7 +55,8 @@ export default function PrivacyPolicyPage() {
         </li>
         <li>
           <strong>Legitimate interests</strong> — security, abuse prevention, product
-          reliability, and understanding crashes.
+          reliability, understanding crashes, and aggregated visit counts on this
+          website.
         </li>
         <li>
           <strong>Legal obligation</strong> — where we must keep records, for example
@@ -76,6 +77,7 @@ export default function PrivacyPolicyPage() {
         <li>Sentry — crash and error reports, if configured</li>
         <li>Stripe, including Stripe Connect — card payments and organiser payouts</li>
         <li>Postmark — to deliver messages from this website’s contact form</li>
+        <li>Vercel — hosting and cookieless website visit counts</li>
       </ul>
       <p>
         Group members can see your name, photo, and rating — not your mobile or email —
@@ -113,8 +115,8 @@ export default function PrivacyPolicyPage() {
 
       <h3>7. International transfers</h3>
       <p>
-        Some processors (for example Expo, Sentry, Stripe, Twilio, Google, Meta, and
-        TikTok) may process data outside the UK. Where that happens they use
+        Some processors (for example Expo, Sentry, Stripe, Twilio, Vercel, Google, Meta,
+        and TikTok) may process data outside the UK. Where that happens they use
         appropriate safeguards such as UK adequacy regulations or standard contractual
         clauses.
       </p>
@@ -135,6 +137,12 @@ export default function PrivacyPolicyPage() {
         advertising or analytics cookies. You can change your mind by clearing this
         site’s data in your browser. Contact form submissions are emailed to us so we
         can reply; that is not a tracking cookie.
+      </p>
+      <p>
+        We also count visits with Vercel Web Analytics. That does not use cookies and
+        does not identify you. It records the page, referrer, device type, and
+        approximate location so we can see how many people use the site. It still runs
+        if you choose Reject.
       </p>
 
       <h3>9. Changes</h3>

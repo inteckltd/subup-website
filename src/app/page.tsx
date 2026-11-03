@@ -4,7 +4,7 @@ import { DownloadCta } from "@/components/download-cta";
 import { Features } from "@/components/features";
 import { Hero } from "@/components/hero";
 import { HowItWorks } from "@/components/how-it-works";
-import { LogoTicker } from "@/components/logo-ticker";
+import { Problems } from "@/components/problems";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -14,7 +14,7 @@ export default function HomePage() {
   return (
     <main id="main">
       <Hero />
-      <LogoTicker />
+      <Problems />
       <HowItWorks />
       <Features />
       <DownloadCta />

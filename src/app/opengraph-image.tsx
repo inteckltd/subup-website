@@ -22,25 +22,25 @@ export default function OpenGraphImage() {
         <div
           style={{
             color: "#05deed",
-            fontSize: 36,
+            fontSize: 56,
             fontWeight: 800,
-            letterSpacing: 10,
+            letterSpacing: -1,
           }}
         >
-          SUBUP
+          SubUp
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           <div
             style={{
               color: "#fefefd",
-              fontSize: 52,
+              fontSize: 76,
               fontWeight: 800,
               lineHeight: 1.15,
               letterSpacing: -1,
-              maxWidth: 900,
+              maxWidth: 1000,
             }}
           >
-            Sub In. Level Up.
+            {site.metaTitle}
           </div>
           <div style={{ color: "rgba(254,254,253,0.75)", fontSize: 24 }}>
             {site.kicker}

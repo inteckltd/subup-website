@@ -3,16 +3,11 @@ import { site } from "@/lib/site";
 
 export function ContactSection() {
   return (
-    <section id="contact" className="bg-background px-6 pb-24 sm:pb-32 lg:px-20">
-      <div className="border-border mx-auto grid w-full max-w-[1280px] gap-12 rounded-[48px] border bg-white px-8 py-12 shadow-[0px_10px_40px_-10px_rgba(3,36,136,0.08)] sm:px-12 sm:py-16 lg:grid-cols-[0.9fr_1.1fr]">
+    <section id="contact" className="bg-background scroll-mt-14 px-5 py-14 sm:px-6 sm:py-20 lg:px-8">
+      <div className="mx-auto grid w-full max-w-[1280px] gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
         <div>
-          <div className="mb-6 flex items-center gap-3">
-            <span className="bg-cyan h-px w-8" />
-            <span className="text-primary text-[10px] font-bold tracking-[0.3em] uppercase">
-              Support
-            </span>
-          </div>
-          <h2 className="text-primary mb-4 text-[clamp(32px,5vw,56px)] leading-none font-extrabold tracking-[-0.04em]">
+          <p className="text-primary mb-3 text-xs font-bold tracking-[0.2em] uppercase">Support</p>
+          <h2 className="text-primary mb-4 text-[clamp(28px,4vw,40px)] leading-tight font-extrabold tracking-[-0.03em]">
             Get in touch
           </h2>
           <p className="mb-6 max-w-md">
@@ -27,7 +22,9 @@ export function ContactSection() {
             {site.company}, Manchester, UK
           </p>
         </div>
-        <ContactForm />
+        <div className="border-border rounded-[32px] border bg-white p-6 sm:p-8">
+          <ContactForm />
+        </div>
       </div>
     </section>
   );

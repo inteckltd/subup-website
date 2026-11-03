@@ -5,7 +5,7 @@ import { publicEnv } from "@/lib/public-env";
 import { trackDownload } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
-type Variant = "hero" | "cta";
+type Variant = "hero" | "cta" | "compact";
 
 type StoreButtonsProps = {
   className?: string;
@@ -76,15 +76,42 @@ export function StoreButtons({ className, variant = "hero" }: StoreButtonsProps)
   const iosReady = Boolean(publicEnv.appStoreUrl);
   const androidReady = Boolean(publicEnv.playStoreUrl);
 
-  if (variant === "cta") {
+  if (variant === "compact") {
     return (
-      <div className={cn("flex flex-wrap items-center gap-4", className)}>
+      <div className={cn("grid w-full grid-cols-2 gap-2", className)}>
         <StoreLink
           href={publicEnv.appStoreUrl}
           store="ios"
           label="Download on the App Store"
           comingSoon={!iosReady}
-          className="inline-flex items-center gap-4 rounded-2xl bg-white px-10 py-5 no-underline"
+          className="bg-primary inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl px-3 text-sm font-bold text-white no-underline active:scale-[0.97]"
+        >
+          <AppleGlyph src="/icons/apple.svg" />
+          App Store
+        </StoreLink>
+        <StoreLink
+          href={publicEnv.playStoreUrl}
+          store="android"
+          label="Get it on Google Play"
+          comingSoon={!androidReady}
+          className="border-border text-foreground inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border bg-white px-3 text-sm font-bold no-underline active:scale-[0.97]"
+        >
+          <PlayGlyph />
+          Google Play
+        </StoreLink>
+      </div>
+    );
+  }
+
+  if (variant === "cta") {
+    return (
+      <div className={cn("flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4", className)}>
+        <StoreLink
+          href={publicEnv.appStoreUrl}
+          store="ios"
+          label="Download on the App Store"
+          comingSoon={!iosReady}
+          className="inline-flex min-h-14 w-full items-center justify-center gap-4 rounded-2xl bg-white px-10 py-4 no-underline transition-transform duration-150 active:scale-[0.97] sm:w-auto"
         >
           <AppleGlyph src="/icons/apple-navy.svg" />
           <span className="text-primary text-sm font-bold tracking-[0.14em] uppercase">
@@ -96,7 +123,7 @@ export function StoreButtons({ className, variant = "hero" }: StoreButtonsProps)
           store="android"
           label="Get it on Google Play"
           comingSoon={!androidReady}
-          className="inline-flex items-center gap-4 rounded-2xl bg-cyan px-10 py-5 no-underline"
+          className="inline-flex min-h-14 w-full items-center justify-center gap-4 rounded-2xl bg-cyan px-10 py-4 no-underline transition-transform duration-150 active:scale-[0.97] sm:w-auto"
         >
           <PlayGlyph />
           <span className="text-primary text-sm font-bold tracking-[0.14em] uppercase">
@@ -108,13 +135,13 @@ export function StoreButtons({ className, variant = "hero" }: StoreButtonsProps)
   }
 
   return (
-    <div className={cn("flex flex-wrap items-center gap-4", className)}>
+    <div className={cn("flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4", className)}>
       <StoreLink
         href={publicEnv.appStoreUrl}
         store="ios"
         label="Download on the App Store"
         comingSoon={!iosReady}
-        className="border-primary bg-primary inline-flex items-center gap-3 rounded-2xl border px-7 py-4 text-white no-underline"
+        className="border-primary bg-primary inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-2xl border px-7 py-3 text-white no-underline transition-transform duration-150 hover:bg-navy-hover active:scale-[0.97] sm:w-auto"
       >
         <AppleGlyph src="/icons/apple.svg" />
         <span className="flex flex-col items-start leading-none">
@@ -129,7 +156,7 @@ export function StoreButtons({ className, variant = "hero" }: StoreButtonsProps)
         store="android"
         label="Get it on Google Play"
         comingSoon={!androidReady}
-        className="border-border inline-flex items-center gap-3 rounded-2xl border bg-white px-7 py-4 no-underline"
+        className="border-border inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-2xl border bg-white px-7 py-3 no-underline transition-transform duration-150 hover:bg-muted active:scale-[0.97] sm:w-auto"
       >
         <PlayGlyph />
         <span className="flex flex-col items-start leading-none">

@@ -5,6 +5,7 @@ import "./globals.css";
 import { SkipLink } from "@/components/skip-link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { MobileDownloadBar } from "@/components/mobile-download-bar";
 import { ConsentManager } from "@/components/consent-manager";
 import { JsonLd } from "@/components/json-ld";
 import { publicEnv } from "@/lib/public-env";
@@ -22,7 +23,7 @@ const metadataBase = new URL(publicEnv.siteUrl);
 export const metadata: Metadata = {
   metadataBase,
   title: {
-    default: `${site.name} — Sub In. Level Up.`,
+    default: `${site.name} — ${site.metaTitle}`,
     template: `%s — ${site.name}`,
   },
   description: site.description,
@@ -43,12 +44,12 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_GB",
     siteName: site.name,
-    title: `${site.name} — Sub In. Level Up.`,
+    title: `${site.name} — ${site.metaTitle}`,
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Sub In. Level Up.`,
+    title: `${site.name} — ${site.metaTitle}`,
     description: site.description,
   },
   robots: {
@@ -94,6 +95,7 @@ export default function RootLayout({
         <SiteHeader />
         {children}
         <SiteFooter />
+        <MobileDownloadBar />
         <ConsentManager
           ids={{
             gaMeasurementId: publicEnv.gaMeasurementId,

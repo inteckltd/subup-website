@@ -1,35 +1,66 @@
-import { PhoneMockup } from "@/components/phone-mockup";
+import { existsSync } from "node:fs";
+import path from "node:path";
+import Image from "next/image";
+import { HeroCards } from "@/components/hero-cards";
+import { HeroFilm } from "@/components/hero-film";
+import { Reveal } from "@/components/reveal";
 import { StoreButtons } from "@/components/store-buttons";
-import { site } from "@/lib/site";
+import { filmPaths, site } from "@/lib/site";
+
+function publicFileExists(urlPath: string) {
+  return existsSync(path.join(process.cwd(), "public", urlPath));
+}
 
 export function Hero() {
+  const hasVideo = publicFileExists(filmPaths.video);
+  const hasPoster = publicFileExists(filmPaths.poster);
+
   return (
-    <section className="relative overflow-hidden px-6 pt-16 pb-24 sm:pt-24 sm:pb-32 lg:px-8">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(3,36,136,0.06),transparent_55%)]" />
-      <div className="bg-cyan/10 pointer-events-none absolute -top-[20%] -left-[10%] h-[40%] w-[50%] rounded-full blur-[80px]" />
-      <div className="relative mx-auto flex w-full max-w-[1280px] flex-col items-center gap-16 lg:flex-row lg:gap-20">
-        <div className="flex max-w-xl flex-col items-start gap-8 lg:max-w-none lg:flex-1">
-          <div className="border-cyan/20 bg-cyan/10 inline-flex items-center gap-3 rounded-full border px-4 py-2">
-            <span className="bg-cyan size-2 rounded-full" />
-            <span className="text-primary text-[10px] font-bold tracking-[0.2em] uppercase">
+    <section className="bg-night relative -mt-[65px] overflow-hidden px-5 pt-[calc(65px+2.5rem)] pb-14 sm:px-6 sm:pt-[calc(65px+4rem)] sm:pb-20 lg:px-8">
+      <Image
+        src="/images/hero-pitch.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-[70%_center] opacity-80"
+      />
+      <div className="from-night via-night/80 to-night/20 absolute inset-0 bg-gradient-to-r" />
+      <div className="from-night absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t to-transparent" />
+      <div className="subup-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_30%_40%,black,transparent_70%)]" />
+
+      <div className="relative mx-auto grid w-full max-w-[1280px] items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
+        <div className="flex flex-col items-start gap-6">
+          <Reveal onLoad>
+            <p className="m-0 inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-bold tracking-[0.14em] text-white uppercase backdrop-blur">
+              <span className="bg-cyan size-2 rounded-full" />
               {site.kicker}
-            </span>
-          </div>
-          <h1 className="text-primary m-0 text-[clamp(56px,10vw,128px)] leading-[0.95] font-extrabold tracking-[-0.05em]">
-            {site.headline}
-            <br />
-            <span className="text-cyan">{site.headlineAccent}</span>
-          </h1>
-          <p className="text-muted-foreground m-0 max-w-lg text-lg leading-8 sm:text-xl">
-            {site.heroBody}
-          </p>
-          <div id="download" className="pt-2">
-            <StoreButtons />
-          </div>
+            </p>
+          </Reveal>
+          <Reveal onLoad delay={0.08}>
+            <h1 className="m-0 text-[clamp(40px,8.5vw,76px)] leading-[1.02] font-extrabold tracking-[-0.04em] text-white [&>span]:block">
+              <span>{site.headline}</span>
+              <span className="text-cyan">{site.headlineAccent}</span>
+            </h1>
+          </Reveal>
+          <Reveal onLoad delay={0.16}>
+            <p className="m-0 max-w-xl text-lg leading-8 text-white/75 sm:text-xl">{site.heroBody}</p>
+          </Reveal>
+          <Reveal onLoad delay={0.24} className="w-full">
+            <div id="download">
+              <StoreButtons variant="cta" />
+            </div>
+          </Reveal>
+          <Reveal onLoad delay={0.32} className="w-full">
+            <HeroFilm
+              posterSrc={hasPoster ? filmPaths.poster : filmPaths.fallbackPoster}
+              videoSrc={hasVideo ? filmPaths.video : null}
+            />
+          </Reveal>
         </div>
-        <div className="flex justify-center lg:flex-1 lg:justify-end">
-          <PhoneMockup />
-        </div>
+        <Reveal onLoad delay={0.2}>
+          <HeroCards />
+        </Reveal>
       </div>
     </section>
   );

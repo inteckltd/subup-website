@@ -1,14 +1,14 @@
 export const site = {
   name: "SubUp",
-  wordmark: "SUBUP",
-  headline: "Sub In.",
-  headlineAccent: "Level Up.",
-  tagline: "Organise the kickabout, collect the cash, track the games.",
+  headline: "Organise the kickabout.",
+  headlineAccent: "Collect the cash.",
+  metaTitle: "Organise the kickabout. Collect the cash.",
+  tagline: "Organise the kickabout, collect the cash, track the games, climb the ratings.",
   description:
-    "SubUp is a UK app for private football groups. Schedule games, collect the cash, track scores, and climb the ratings — without WhatsApp chaos.",
+    "SubUp is a UK app for private sports groups. Invite your mates, pay to take your spot, track the games, and climb the ratings, without WhatsApp chaos.",
   heroBody:
-    "The ultimate sports matchmaking platform. Get invited to groups, join elite games, and track your MMR across football.",
-  kicker: "UK · Football",
+    "Private groups for football, rugby, padel, basketball and more. Everyone who plays has paid, and the history stays with the group.",
+  kicker: "Private groups · UK",
   company: "Inteck Ltd",
   companyNumber: "12246244",
   address:
@@ -20,7 +20,13 @@ export const site = {
 } as const;
 
 export const navLinks = [
-  { href: "/#how-it-works", label: "Process" },
+  { href: "/#how-it-works", label: "How it works" },
   { href: "/#features", label: "Features" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/#contact", label: "Support" },
 ] as const;
+
+export const filmPaths = {
+  video: "/video/subup.mp4",
+  poster: "/video/subup-poster.jpg",
+  fallbackPoster: "/images/auth-hero.jpg",
+} as const;

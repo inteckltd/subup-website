@@ -1,46 +1,39 @@
 import Image from "next/image";
+import { BrandLogo } from "@/components/brand-logo";
+import { PhoneMockup } from "@/components/phone-mockup";
+import { Reveal } from "@/components/reveal";
 import { StoreButtons } from "@/components/store-buttons";
 
 export function DownloadCta() {
   return (
-    <section className="bg-white px-6 py-24 sm:py-32 lg:px-20">
-      <div className="bg-primary relative mx-auto w-full max-w-[1280px] overflow-hidden rounded-[48px] px-8 py-16 sm:rounded-[64px] sm:px-16 sm:py-24">
-        <p className="pointer-events-none absolute -top-10 -right-10 rotate-12 text-[min(40vw,400px)] leading-none font-extrabold text-white/10 italic uppercase">
-          SUBUP
-        </p>
-        <div className="relative flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
-          <div className="flex flex-1 flex-col items-start gap-8">
-            <h2 className="m-0 text-[clamp(48px,8vw,96px)] leading-[0.95] font-extrabold tracking-[-0.05em] text-white">
-              Ready
-              <br />
-              to
-              <br />
-              sub in &
-              <br />
-              <span className="decoration-cyan italic underline decoration-4 underline-offset-8">
-                win?
-              </span>
-            </h2>
-            <p className="m-0 max-w-md text-xl font-bold text-white/80">
-              Organise the football with your mates. Collect the cash, pick fair teams, and keep
-              the history — all in one app.
-            </p>
-            <StoreButtons variant="cta" />
-          </div>
-          <div className="flex flex-1 justify-center">
-            <div className="border-foreground relative h-[480px] w-[240px] overflow-hidden rounded-[48px] border-[10px] bg-foreground p-2 shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] sm:h-[580px] sm:w-[288px]">
-              <div className="relative h-full overflow-hidden rounded-[36px]">
-                <Image
-                  src="/images/marketing/phone-dashboard.jpg"
-                  alt="SubUp match history on a phone"
-                  fill
-                  className="object-cover object-[center_top]"
-                  sizes="288px"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+    <section id="get-the-app" className="bg-night relative overflow-hidden px-5 py-14 sm:px-6 sm:py-20 lg:px-8">
+      <Image
+        src="/images/hero-pitch.jpg"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover object-[80%_center] opacity-35"
+      />
+      <div className="from-night via-night/85 to-night/40 absolute inset-0 bg-gradient-to-r" />
+      <div className="subup-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_70%_50%,black,transparent_70%)]" />
+      <div className="bg-cyan/20 pointer-events-none absolute -right-20 bottom-0 size-[420px] rounded-full blur-3xl" />
+
+      <div className="relative mx-auto grid w-full max-w-[1280px] items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+        <Reveal className="flex flex-col items-start gap-6">
+          <BrandLogo tone="cyan" height={30} href={null} />
+          <h2 className="m-0 max-w-2xl text-[clamp(34px,6vw,64px)] leading-[1.04] font-extrabold tracking-[-0.04em] text-white">
+            Ready when
+            <br />
+            your mates are.
+          </h2>
+          <p className="m-0 max-w-xl text-lg leading-relaxed text-white/75 sm:text-xl">
+            Organise the kickabout, collect the cash, track the games, climb the ratings.
+          </p>
+          <StoreButtons variant="cta" />
+        </Reveal>
+        <Reveal delay={0.12} className="flex justify-center lg:justify-end">
+          <PhoneMockup frame="home" />
+        </Reveal>
       </div>
     </section>
   );

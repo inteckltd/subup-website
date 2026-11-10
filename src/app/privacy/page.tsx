@@ -108,7 +108,7 @@ export default function PrivacyPolicyPage() {
 
       <h3>6. Children</h3>
       <p>
-        SubUp is intended for adults organising recreational sport. We do not knowingly
+        SubUp is intended for adults organising recreational football. We do not knowingly
         collect data from children. If you think a child has created an account, email
         us and we will delete it.
       </p>

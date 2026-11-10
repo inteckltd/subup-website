@@ -160,7 +160,7 @@ function InviteFrame() {
           </span>
           <div className="min-w-0">
             <p className="text-foreground m-0 text-sm font-extrabold">Priya invited you</p>
-            <p className="text-muted-foreground m-0 text-xs">Sunday padel</p>
+            <p className="text-muted-foreground m-0 text-xs">Sunday 5-a-side</p>
           </div>
         </div>
       </div>

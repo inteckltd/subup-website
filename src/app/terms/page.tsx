@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description:
-    "Terms of Service for SubUp, the UK app for private recreational sports groups, operated by Inteck Ltd.",
+    "Terms of Service for SubUp, the UK app for private football groups, operated by Inteck Ltd.",
   alternates: { canonical: "/terms" },
 };
 
@@ -22,7 +22,7 @@ export default function TermsPage() {
       <p>
         These Terms of Service (“Terms”) apply when you use SubUp, the mobile app
         operated by {site.company} (“Inteck”, “we”, “us”) for organising private
-        recreational sports groups in the United Kingdom.
+        recreational football groups in the United Kingdom.
       </p>
       <p>
         {site.company} is a company registered in England and Wales (company number{" "}
@@ -48,7 +48,7 @@ export default function TermsPage() {
         viewing history and ratings. Groups are invite-only.
       </p>
       <p>
-        We do not run the sport, hire the pitch, or supervise games. Group admins
+        We do not run the football, hire the pitch, or supervise games. Group admins
         organise sessions. You agree to treat other players with respect and not to
         misuse invites, notifications, or SMS.
       </p>

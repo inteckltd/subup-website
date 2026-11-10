@@ -1,6 +1,6 @@
 # SubUp marketing site
 
-Public website for [SubUp](https://www.subupapp.co.uk) — private sports groups for friends in the UK. Built with Next.js, Tailwind CSS, and shadcn/ui.
+Public website for [SubUp](https://www.subupapp.co.uk) — private 5, 6 and 7-a-side football groups for friends in the UK. Built with Next.js, Tailwind CSS, and shadcn/ui.
 
 ## Local
 
@@ -21,7 +21,7 @@ Open [http://localhost:3000](http://localhost:3000). Store badges link to the li
 | `NEXT_PUBLIC_SITE_URL` | Canonical URL (also used for sitemap, robots, JSON-LD) |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | GA4 (`G-…`). Empty = not loaded |
 | `NEXT_PUBLIC_GOOGLE_ADS_ID` | Optional Google Ads (`AW-…`) |
-| `NEXT_PUBLIC_META_PIXEL_ID` | Meta Pixel (Facebook + Instagram) |
+| `NEXT_PUBLIC_META_PIXEL_ID` | Meta Pixel (Facebook + Instagram). Empty = not loaded |
 | `NEXT_PUBLIC_META_DOMAIN_VERIFY` | Meta domain verification meta tag |
 | `NEXT_PUBLIC_TIKTOK_PIXEL_ID` | TikTok Pixel |
 | `NEXT_PUBLIC_APP_STORE_URL` | iOS download link (defaults to the live SubUp listing) |

@@ -5,9 +5,9 @@ export const site = {
   metaTitle: "Organise the kickabout. Collect the cash.",
   tagline: "Organise the kickabout, collect the cash, track the games, climb the ratings.",
   description:
-    "SubUp is a UK app for private sports groups. Invite your mates, pay to take your spot, track the games, and climb the ratings, without WhatsApp chaos.",
+    "SubUp is a UK app for private 5, 6 and 7-a-side football groups. Invite your mates, pay to take your spot, track the games, and climb the ratings, without WhatsApp chaos.",
   heroBody:
-    "Private groups for football, rugby, padel, basketball and more. Everyone who plays has paid, and the history stays with the group.",
+    "Private groups for 5, 6 and 7-a-side football, without the WhatsApp mess. Everyone who plays has paid, and the history stays with the group.",
   kicker: "Private groups · UK",
   company: "Inteck Ltd",
   companyNumber: "12246244",

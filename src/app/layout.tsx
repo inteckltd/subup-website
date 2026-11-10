@@ -34,8 +34,10 @@ export const metadata: Metadata = {
   publisher: site.company,
   keywords: [
     "SubUp",
-    "private sports groups",
+    "private football groups",
     "5-a-side",
+    "6-a-side",
+    "7-a-side",
     "football",
     "UK",
     "pay to play",

@@ -17,7 +17,7 @@ export default function TermsPage() {
       intro="How SubUp works, what you can expect from us, and the rules for using the app."
     >
       <p className="text-muted-foreground mb-5 text-xs font-bold tracking-[0.08em] uppercase">
-        Version 1.6 · Last updated 26 August 2026
+        Version 1.8 · Last updated 23 November 2026
       </p>
       <p>
         These Terms of Service (“Terms”) apply when you use SubUp, the mobile app

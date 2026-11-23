@@ -18,7 +18,7 @@ export default function PrivacyPolicyPage() {
       intro="What we collect, why we collect it, who we share it with, and your rights under UK GDPR."
     >
       <p className="text-muted-foreground mb-5 text-xs font-bold tracking-[0.08em] uppercase">
-        Version 1.4 · Last updated 26 August 2026
+        Version 1.6 · Last updated 23 November 2026
       </p>
       <p>
         {site.company} (“SubUp”, “we”, “us”) is the controller of personal data you
